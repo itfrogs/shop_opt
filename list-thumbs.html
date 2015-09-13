@@ -72,7 +72,7 @@
         {/if}
         <div itemprop="offers" class="offers" itemscope itemtype="http://schema.org/Offer">
             {if $available}
-                <form class="purchase addtocart" {if $p.sku_count > 1}data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1"{/if} method="post" action="{$wa->getUrl('/frontendCart/add')}">
+                <form class="purchase addtocart" {if $p.sku_count > 1}data-url="{$p.frontend_url}{if strpos($p.frontend_url, '?')}&{else}?{/if}cart=1"{/if} method="post" action="{shopOptPluginViewHelper::getCartAddUrl()}">
                     <div class="pricing">
                         {if $p.compare_price > 0}<span class="compare-at-price nowrap"> {shop_currency_html($p.compare_price)}</span> {/if}
                         <span class="price nowrap">{shop_currency_html(shopOptPluginViewHelper::getUserPrice($p.sku_id))}</span>
