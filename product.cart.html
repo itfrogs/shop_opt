@@ -1,4 +1,4 @@
-<form id="cart-form{if $wa->get('cart')}-dialog{/if}" method="post" action="{shopOptPluginViewHelper::getCartAddUrl()}">
+<form id="cart-form{if $wa->get('cart')}-dialog{/if}" method="post" action="{$wa->getUrl('/frontendCart/add')}">
 
     <h4>{sprintf('[`Buy %s`]',$product.name|escape)}</h4>
     {if $wa->get('cart')}
@@ -46,7 +46,6 @@
         
         <!-- list all SKUs for Schema.org markup -->
         {foreach $product.skus as $sku}
-            <!---------------->
             {$sku.price = shopOptPluginViewHelper::getUserPrice($sku.id)}
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 {$sku_available =  $product.status && $sku.available && ($wa->shop->settings('ignore_stock_count') || $sku.count === null || $sku.count > 0)}
@@ -97,7 +96,6 @@
             {* in case there is only one SKU, don't display the selector *}
             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 {$sku = $product.skus[$product.sku_id]}
-                <!---------------->
                 {$sku.price = shopOptPluginViewHelper::getUserPrice($sku.id)}
                 {if $sku.sku}<span class="hint">{$sku.sku|escape}</span>{/if}
                 {if $sku.name}<meta itemprop="name" content="{$sku.name|escape}">{/if}
