@@ -119,7 +119,7 @@
         $('header .banner h3').show();
     
         function checkoutStep(step_id) {
-            $.get("{shopOptPluginViewHelper::getCheckoutUrl()}/" + step_id + '/', function (response) {
+            $.get("{$wa->getUrl('/frontend/checkout')}" + step_id + '/', function (response) {
                 var current = $(".checkout-step .checkout-step-content:visible");
                 var current_step_id =  current.find(".checkout-content").data('step-id');
                 if (current_step_id != step_id) {
