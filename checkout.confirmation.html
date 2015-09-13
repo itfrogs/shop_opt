@@ -4,7 +4,7 @@
         <div class="checkout-result error">
             {$error}
             <br><br>
-            <a href="{$wa->getUrl('/frontend/checkout')}">[`Restart checkout`]</a>
+            <a href="{shopOptPluginViewHelper::getCheckoutUrl()}">[`Restart checkout`]</a>
         </div>
     {else}
     
